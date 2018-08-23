@@ -1,0 +1,7 @@
+!lib/
+src/
+.babelrc
+.eslintignore
+.eslintrc
+.gitignore
+.npmignore

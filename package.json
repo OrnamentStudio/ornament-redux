@@ -1,0 +1,35 @@
+{
+  "name": "ornament-redux",
+  "version": "0.2.0",
+  "description": "Helpers",
+  "scripts": {
+    "prepublishOnly": "npm run build",
+    "build": "NODE_ENV=production babel src --out-dir lib --copy-files",
+    "start": "npm run build -- --watch",
+    "test": "npm run build && mocha \"test/**/*.js\"",
+    "lint": "npm run build && eslint --ext .es,.js --ignore-path .eslintignore --format codeframe ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OrnamentStudio/redux.git"
+  },
+  "author": "Abylay Keldibek <atomio.ak@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OrnamentStudio/redux/issues"
+  },
+  "homepage": "https://github.com/OrnamentStudio/redux#readme",
+  "engines": {
+    "node": "^8.x.x"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-runtime": "6.23.0",
+    "babel-preset-env": "1.7.0",
+    "babel-preset-stage-3": "6.24.1",
+    "chai": "^4.1.2",
+    "eslint": "^5.1.0",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0"
+  }
+}
