@@ -1,7 +1,7 @@
 {
   "name": "ornament-redux",
-  "version": "0.2.0",
-  "description": "Helpers",
+  "version": "0.0.0",
+  "description": "Redux modules",
   "scripts": {
     "prepublishOnly": "npm run build",
     "build": "NODE_ENV=production babel src --out-dir lib --copy-files",
