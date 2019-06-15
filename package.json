@@ -3,11 +3,7 @@
   "version": "1.1.0",
   "description": "Redux modules",
   "scripts": {
-    "prepublishOnly": "npm run build",
-    "build": "NODE_ENV=production babel src --out-dir lib --copy-files",
-    "start": "npm run build -- --watch",
-    "test": "npm run build && mocha \"test/**/*.js\"",
-    "lint": "npm run build && eslint --ext .es,.js --ignore-path .eslintignore --format codeframe ./"
+    "test": "eslint --format codeframe ./"
   },
   "repository": {
     "type": "git",
@@ -23,17 +19,11 @@
     "node": "^8.x.x"
   },
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.3.4",
-    "@babel/runtime": "^7.0.0",
-    "@babel/plugin-transform-runtime": "^7.3.4",
-    "@babel/preset-env": "^7.3.4",
-    "chai": "^4.2.0",
     "eslint": "^5.7.0",
     "eslint-config-airbnb-base": "^13.0.0",
-    "eslint-plugin-import": "^2.13.0"
+    "eslint-plugin-import": "^2.17.3"
   },
   "dependencies": {
-    "superagent": "^5.0.5"
+    "superagent": "^5.0.9"
   }
 }

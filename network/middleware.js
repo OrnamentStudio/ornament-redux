@@ -1,8 +1,8 @@
-import request from './request';
-import { resolved, rejected } from './types';
+const request = require('./request');
+const { resolved, rejected } = require('./types');
 
 
-export default (store) => (next) => (action) => {
+module.exports = store => next => (action) => {
   if (!action.request) return next(action);
 
   const { request: options, type } = action;

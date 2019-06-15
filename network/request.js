@@ -1,4 +1,4 @@
-import superagent from 'superagent';
+const superagent = require('superagent');
 
 
 const INTERNAL_LINK = /^\//;
@@ -14,11 +14,7 @@ const defaultOptions = {
   customize: null,
 };
 
-export const configure = (options) => {
-  apiRoot = options.api_root;
-};
-
-export default (options) => {
+module.exports = (options) => {
   const {
     url,
     type,
@@ -60,4 +56,8 @@ export default (options) => {
   ));
 
   return { request, promise };
+};
+
+module.exports.configure = (options) => {
+  apiRoot = options.api_root;
 };
