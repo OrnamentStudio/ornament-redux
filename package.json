@@ -20,10 +20,10 @@
   },
   "devDependencies": {
     "eslint": "^5.7.0",
-    "eslint-config-airbnb-base": "^13.0.0",
-    "eslint-plugin-import": "^2.17.3"
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.0"
   },
   "dependencies": {
-    "superagent": "^5.0.9"
+    "superagent": "^5.1.0"
   }
 }
