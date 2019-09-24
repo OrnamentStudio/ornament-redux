@@ -2,7 +2,7 @@ const request = require('./request');
 const { resolved, rejected } = require('./types');
 
 
-module.exports = store => next => (action) => {
+module.exports = (store) => (next) => (action) => {
   if (!action.request) return next(action);
 
   const { request: options, type } = action;
