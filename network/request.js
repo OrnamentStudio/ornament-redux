@@ -2,7 +2,6 @@ const superagent = require('superagent');
 
 
 const INTERNAL_LINK = /^\//;
-let apiRoot;
 
 const defaultOptions = {
   url: null,
@@ -23,6 +22,7 @@ module.exports = (options) => {
     query,
     multipart,
     customize,
+    apiRoot,
   } = { ...defaultOptions, ...options };
 
   const newUrl = INTERNAL_LINK.test(url) ? `${apiRoot}${url}` : url;
@@ -47,8 +47,8 @@ module.exports = (options) => {
       const body = (response && response.body) || {};
 
       if (err) {
-        const statusCode = parseInt(response && response.status, 10) || 500;
-        reject(body, statusCode);
+        body.statusCode = parseInt(response && response.status, 10) || 500;
+        reject(body);
       } else {
         resolve(body);
       }
@@ -56,8 +56,4 @@ module.exports = (options) => {
   ));
 
   return { request, promise };
-};
-
-module.exports.configure = (options) => {
-  apiRoot = options.api_root;
 };

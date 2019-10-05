@@ -2,9 +2,10 @@ const request = require('./request');
 const { resolved, rejected } = require('./types');
 
 
-module.exports = (store) => (next) => (action) => {
+module.exports = (config = {}) => (store) => (next) => (action) => {
   if (!action.request) return next(action);
 
+  const { apiRoot } = config;
   const { request: options, type } = action;
   const { shouldRequest, ...cleanOptions } = options;
 
@@ -12,7 +13,7 @@ module.exports = (store) => (next) => (action) => {
     return Promise.resolve();
   }
 
-  const { promise } = request(cleanOptions);
+  const { promise } = request({ apiRoot, ...cleanOptions });
 
   const handleSuccess = (payload) => {
     const newAction = { type: resolved(type), payload, network: false };
