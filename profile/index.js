@@ -10,6 +10,7 @@ const types = {
   PROFILE_SET: 'profile@PROFILE_SET',
   PROFILE_LOCAL_UPDATE: 'profile@PROFILE_LOCAL_UPDATE',
 
+  PROFILE_CREATE: 'profile@PROFILE_CREATE',
   PROFILE_GET: 'profile@PROFILE_GET',
   PROFILE_UPDATE: 'profile@PROFILE_UPDATE',
 
@@ -23,6 +24,17 @@ const actions = {
 
   updateLocalProfile(payload) {
     return { type: types.PROFILE_LOCAL_UPDATE, payload };
+  },
+
+  createProfile(url, payload) {
+    return {
+      type: types.PROFILE_CREATE,
+      request: {
+        url,
+        payload,
+        type: 'post',
+      },
+    };
   },
 
   getProfile(url) {
@@ -58,6 +70,7 @@ const actions = {
 const createReducer = (key) => (state = null, action) => {
   switch (action.type) {
     case types.PROFILE_SET:
+    case resolved(types.PROFILE_CREATE):
     case resolved(types.PROFILE_GET):
     case resolved(types.PROFILE_UPDATE): {
       setProfile(key, action.payload);
