@@ -8,12 +8,13 @@ module.exports = (config = {}) => (store) => (next) => (action) => {
   const { apiRoot } = config;
   const { request: options, type } = action;
   const { shouldRequest, ...cleanOptions } = options;
+  const state = store.getState();
 
-  if (shouldRequest && !shouldRequest(store.getState())) {
+  if (shouldRequest && !shouldRequest(state)) {
     return Promise.resolve();
   }
 
-  const { promise } = request({ apiRoot, ...cleanOptions });
+  const { promise } = request({ apiRoot, token: state.token, ...cleanOptions });
 
   const handleSuccess = (payload) => {
     const newAction = { type: resolved(type), payload, network: false };
