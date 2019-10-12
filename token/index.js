@@ -22,10 +22,10 @@ const actions = {
   },
 };
 
-const createReducer = (options) => (state = null, action) => {
+const createReducer = (key, options) => (state = null, action) => {
   switch (action.type) {
     case types.TOKEN_SET: {
-      if (process.browser) setToken(action.payload, options);
+      if (process.browser) setToken(key, action.payload, options);
       return action.payload;
     }
     default: {
