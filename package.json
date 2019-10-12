@@ -1,9 +1,9 @@
 {
   "name": "ornament-redux",
-  "version": "3.0.0",
+  "version": "3.1.0.beta.0",
   "description": "Redux modules",
   "scripts": {
-    "test": "eslint --format codeframe ./"
+    "test": "eslint --format codeframe \"./**/*.js\""
   },
   "repository": {
     "type": "git",
@@ -19,11 +19,17 @@
     "node": "^8.x.x"
   },
   "devDependencies": {
-    "eslint": "^6.4.0",
+    "eslint": "^6.5.1",
     "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.18.2"
+    "eslint-plugin-import": "^2.18.2",
+    "updeep": "^1.2.0"
   },
   "dependencies": {
+    "js-cookie": "^2.2.1",
+    "store": "^2.0.12",
     "superagent": "^5.1.0"
+  },
+  "peerDependencies": {
+    "updeep": "^1.x.x"
   }
 }
