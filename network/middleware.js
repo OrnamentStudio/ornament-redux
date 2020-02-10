@@ -6,7 +6,7 @@ module.exports = (config = {}) => (store) => (next) => (action) => {
   if (!action.request) return next(action);
 
   const { apiRoot } = config;
-  const { request: options, type } = action;
+  const { request: options, type, meta } = action;
   const { shouldRequest, ...cleanOptions } = options;
   const state = store.getState();
 
@@ -17,12 +17,24 @@ module.exports = (config = {}) => (store) => (next) => (action) => {
   const { promise } = request({ apiRoot, token: state.token, ...cleanOptions });
 
   const handleSuccess = (payload) => {
-    const newAction = { type: resolved(type), payload, network: false };
+    const newAction = {
+      meta,
+      payload,
+      type: resolved(type),
+      network: false,
+    };
+
     store.dispatch(newAction);
   };
 
   const handleError = (payload) => {
-    const newAction = { type: rejected(type), payload, network: false };
+    const newAction = {
+      meta,
+      payload,
+      type: rejected(type),
+      network: false,
+    };
+
     store.dispatch(newAction);
   };
 
